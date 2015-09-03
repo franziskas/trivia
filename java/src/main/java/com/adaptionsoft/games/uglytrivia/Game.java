@@ -10,6 +10,7 @@ public class Game {
     private static final String CATEGORY_SCIENCE = "Science";
     private static final String CATEGORY_SPORTS = "Sports";
     private static final String CATEGORY_ROCK = "Rock";
+    private static final int MINIMUM_AMOUNT_OF_PLAYERS = 2;
 
     ArrayList players = new ArrayList();
     int[] places = new int[MAXIMUM_AMOUNT_OF_PLAYERS];
@@ -38,7 +39,7 @@ public class Game {
     }
 
     public boolean isPlayable() {
-        return (howManyPlayers() >= 2);
+        return (howManyPlayers() >= MINIMUM_AMOUNT_OF_PLAYERS);
     }
 
     public boolean add(String playerName) {
@@ -63,7 +64,7 @@ public class Game {
         System.out.println("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
-            if (roll % 2 != 0) {
+            if (roll % MINIMUM_AMOUNT_OF_PLAYERS != 0) {
                 isGettingOutOfPenaltyBox = true;
 
                 System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
@@ -113,7 +114,7 @@ public class Game {
         if (places[currentPlayer] == 1) return CATEGORY_SCIENCE;
         if (places[currentPlayer] == 5) return CATEGORY_SCIENCE;
         if (places[currentPlayer] == 9) return CATEGORY_SCIENCE;
-        if (places[currentPlayer] == 2) return CATEGORY_SPORTS;
+        if (places[currentPlayer] == MINIMUM_AMOUNT_OF_PLAYERS) return CATEGORY_SPORTS;
         if (places[currentPlayer] == MAXIMUM_AMOUNT_OF_PLAYERS) return CATEGORY_SPORTS;
         if (places[currentPlayer] == 10) return CATEGORY_SPORTS;
         return CATEGORY_ROCK;

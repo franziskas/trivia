@@ -8,13 +8,18 @@ import org.junit.Test;
 public class GoldenMaster {
     @Test
     public void execute_one_game() {
+        Random rand = new Random();
+        runOneGame(rand);
+
+    }
+
+    private void runOneGame(Random rand) {
         Game aGame = new Game();
 
         aGame.add("Chet");
         aGame.add("Pat");
         aGame.add("Sue");
 
-        Random rand = new Random();
 
         boolean notAWinner;
         do {
@@ -29,6 +34,5 @@ public class GoldenMaster {
 
 
         } while (notAWinner);
-
     }
 }

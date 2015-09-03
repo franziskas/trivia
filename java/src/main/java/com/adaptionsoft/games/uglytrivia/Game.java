@@ -6,6 +6,10 @@ import java.util.LinkedList;
 public class Game {
     public static final int MAXIMUM_AMOUNT_OF_PLAYERS = 6;
     public static final int NUMBER_OF_QUESTIONS = 50;
+    private static final String CATEGORY_POP = "Pop";
+    private static final String CATEGORY_SCIENCE = "Science";
+    private static final String CATEGORY_SPORTS = "Sports";
+    private static final String CATEGORY_ROCK = "Rock";
 
     ArrayList players = new ArrayList();
     int[] places = new int[MAXIMUM_AMOUNT_OF_PLAYERS];
@@ -22,15 +26,15 @@ public class Game {
 
     public Game() {
         for (int i = 0; i < NUMBER_OF_QUESTIONS; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
+            popQuestions.addLast(CATEGORY_POP + " Question " + i);
+            scienceQuestions.addLast((CATEGORY_SCIENCE + " Question " + i));
+            sportsQuestions.addLast((CATEGORY_SPORTS + " Question " + i));
             rockQuestions.addLast(createRockQuestion(i));
         }
     }
 
     public String createRockQuestion(int index) {
-        return "Rock Question " + index;
+        return CATEGORY_ROCK + " Question " + index;
     }
 
     public boolean isPlayable() {
@@ -91,28 +95,28 @@ public class Game {
     }
 
     private void askQuestion() {
-        if (currentCategory() == "Pop")
+        if (currentCategory() == CATEGORY_POP)
             System.out.println(popQuestions.removeFirst());
-        if (currentCategory() == "Science")
+        if (currentCategory() == CATEGORY_SCIENCE)
             System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory() == "Sports")
+        if (currentCategory() == CATEGORY_SPORTS)
             System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory() == "Rock")
+        if (currentCategory() == CATEGORY_ROCK)
             System.out.println(rockQuestions.removeFirst());
     }
 
 
     private String currentCategory() {
-        if (places[currentPlayer] == 0) return "Pop";
-        if (places[currentPlayer] == 4) return "Pop";
-        if (places[currentPlayer] == 8) return "Pop";
-        if (places[currentPlayer] == 1) return "Science";
-        if (places[currentPlayer] == 5) return "Science";
-        if (places[currentPlayer] == 9) return "Science";
-        if (places[currentPlayer] == 2) return "Sports";
-        if (places[currentPlayer] == MAXIMUM_AMOUNT_OF_PLAYERS) return "Sports";
-        if (places[currentPlayer] == 10) return "Sports";
-        return "Rock";
+        if (places[currentPlayer] == 0) return CATEGORY_POP;
+        if (places[currentPlayer] == 4) return CATEGORY_POP;
+        if (places[currentPlayer] == 8) return CATEGORY_POP;
+        if (places[currentPlayer] == 1) return CATEGORY_SCIENCE;
+        if (places[currentPlayer] == 5) return CATEGORY_SCIENCE;
+        if (places[currentPlayer] == 9) return CATEGORY_SCIENCE;
+        if (places[currentPlayer] == 2) return CATEGORY_SPORTS;
+        if (places[currentPlayer] == MAXIMUM_AMOUNT_OF_PLAYERS) return CATEGORY_SPORTS;
+        if (places[currentPlayer] == 10) return CATEGORY_SPORTS;
+        return CATEGORY_ROCK;
     }
 
     public boolean wasCorrectlyAnswered() {

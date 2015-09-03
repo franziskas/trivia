@@ -7,8 +7,8 @@ import org.junit.Test;
 public class GoldenMaster {
     @Test
     public void run_golden_master() {
-        for (int i = 0; i < 500; i++) {
-            Random rand = new Random();
+        for (int seed = 0; seed < 500; seed++) {
+            Random rand = new Random(seed);
             runOneGame(rand);
         }
     }

@@ -16,7 +16,7 @@ public class TriviaPrinterShould {
         createMockedSystemOut();
         Object objectToPrint = "Object to print";
 
-        new TriviaPrinter().print(objectToPrint);
+        new ConsolePrinter().print(objectToPrint);
 
         assertThat(actualPrinted, is(objectToPrint));
     }

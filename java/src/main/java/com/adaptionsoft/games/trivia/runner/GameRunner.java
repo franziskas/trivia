@@ -1,4 +1,3 @@
-
 package com.adaptionsoft.games.trivia.runner;
 
 import java.util.Random;

@@ -2,17 +2,33 @@ package com.adaptionsoft.games.trivia;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Paths;
 import java.util.Random;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.Test;
 
+import static java.nio.file.Files.readAllBytes;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class GoldenMaster {
+
+    private static final String TESTRUN_FILE_NAME = "testrun.txt";
+    private static final String MASTER_FILE_NAME = "master.txt";
+
     @Test
-    public void run_golden_master() throws FileNotFoundException {
-        writeOutputTo("master.txt");
+    public void run_golden_master() throws IOException {
+        writeOutputTo(TESTRUN_FILE_NAME);
 
         runGameTimes(500);
+
+        assertThat(readFile(TESTRUN_FILE_NAME), is(readFile(MASTER_FILE_NAME)));
+    }
+
+    private String readFile(String filename) throws IOException {
+        return new String(readAllBytes(Paths.get(filename)));
     }
 
     private void writeOutputTo(String filename) throws FileNotFoundException {

@@ -31,4 +31,11 @@ public class GameShould {
     has_no_players_initially() {
         assertThat(game.numberOfPlayers(), is(0));
     }
+
+    @Test
+    public void
+    has_one_player_after_adding() {
+        game.add("player1");
+        assertThat(game.numberOfPlayers(), is(1));
+    }
 }

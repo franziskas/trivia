@@ -2,15 +2,15 @@ package com.adaptionsoft.games.trivia;
 
 import java.util.Random;
 import com.adaptionsoft.games.uglytrivia.Game;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 public class GoldenMaster {
     @Test
-    public void execute_one_game() {
-        Random rand = new Random();
-        runOneGame(rand);
-
+    public void run_golden_master() {
+        for (int i = 0; i < 500; i++) {
+            Random rand = new Random();
+            runOneGame(rand);
+        }
     }
 
     private void runOneGame(Random rand) {

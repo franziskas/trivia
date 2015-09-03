@@ -59,7 +59,7 @@ public class Game {
         return players.size();
     }
 
-    public void roll(int roll) {
+    public void executeMove(int roll) {
         System.out.println(players.get(currentPlayer) + " is the current player");
         System.out.println("They have rolled a " + roll);
 

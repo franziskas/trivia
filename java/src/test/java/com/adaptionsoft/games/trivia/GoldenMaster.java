@@ -1,12 +1,17 @@
 package com.adaptionsoft.games.trivia;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Random;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.Test;
 
 public class GoldenMaster {
     @Test
-    public void run_golden_master() {
+    public void run_golden_master() throws FileNotFoundException {
+        System.setOut(new PrintStream(new FileOutputStream("master.txt")));
+
         for (int seed = 0; seed < 500; seed++) {
             Random rand = new Random(seed);
             runOneGame(rand);

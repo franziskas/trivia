@@ -26,11 +26,11 @@ public class Game {
     boolean isGettingOutOfPenaltyBox;
 
     public Game() {
-        for (int i = 0; i < NUMBER_OF_QUESTIONS; i++) {
-            popQuestions.addLast(CATEGORY_POP + " Question " + i);
-            scienceQuestions.addLast((CATEGORY_SCIENCE + " Question " + i));
-            sportsQuestions.addLast((CATEGORY_SPORTS + " Question " + i));
-            rockQuestions.addLast(createRockQuestion(i));
+        for (int index = 0; index < NUMBER_OF_QUESTIONS; index++) {
+            popQuestions.addLast(CATEGORY_POP + " Question " + index);
+            scienceQuestions.addLast((CATEGORY_SCIENCE + " Question " + index));
+            sportsQuestions.addLast((CATEGORY_SPORTS + " Question " + index));
+            rockQuestions.addLast(createRockQuestion(index));
         }
     }
 
@@ -39,23 +39,23 @@ public class Game {
     }
 
     public boolean isPlayable() {
-        return (howManyPlayers() >= MINIMUM_AMOUNT_OF_PLAYERS);
+        return (numberOfPlayers() >= MINIMUM_AMOUNT_OF_PLAYERS);
     }
 
     public boolean add(String playerName) {
 
 
         players.add(playerName);
-        places[howManyPlayers()] = 0;
-        numberOfGoldCoins[howManyPlayers()] = 0;
-        inPenaltyBox[howManyPlayers()] = false;
+        places[numberOfPlayers()] = 0;
+        numberOfGoldCoins[numberOfPlayers()] = 0;
+        inPenaltyBox[numberOfPlayers()] = false;
 
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
         return true;
     }
 
-    public int howManyPlayers() {
+    public int numberOfPlayers() {
         return players.size();
     }
 

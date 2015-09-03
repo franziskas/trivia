@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
+    public static final int MAXIMUM_AMOUNT_OF_PLAYERS = 6;
     ArrayList players = new ArrayList();
-    int[] places = new int[6];
-    int[] purses = new int[6];
-    boolean[] inPenaltyBox = new boolean[6];
+    int[] places = new int[MAXIMUM_AMOUNT_OF_PLAYERS];
+    int[] purses = new int[MAXIMUM_AMOUNT_OF_PLAYERS];
+    boolean[] inPenaltyBox = new boolean[MAXIMUM_AMOUNT_OF_PLAYERS];
 
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
@@ -107,7 +108,7 @@ public class Game {
         if (places[currentPlayer] == 5) return "Science";
         if (places[currentPlayer] == 9) return "Science";
         if (places[currentPlayer] == 2) return "Sports";
-        if (places[currentPlayer] == 6) return "Sports";
+        if (places[currentPlayer] == MAXIMUM_AMOUNT_OF_PLAYERS) return "Sports";
         if (places[currentPlayer] == 10) return "Sports";
         return "Rock";
     }
@@ -163,6 +164,6 @@ public class Game {
 
 
     private boolean didPlayerWin() {
-        return !(purses[currentPlayer] == 6);
+        return !(purses[currentPlayer] == MAXIMUM_AMOUNT_OF_PLAYERS);
     }
 }

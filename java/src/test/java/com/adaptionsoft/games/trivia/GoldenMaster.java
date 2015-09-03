@@ -64,7 +64,7 @@ public class GoldenMaster {
     }
 
     private Game createGame() {
-        Game aGame = new Game();
+        Game aGame = new Game(new ConsolePrinter());
 
         aGame.add("Chet");
         aGame.add("Pat");

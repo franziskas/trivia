@@ -2,6 +2,7 @@ package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import com.adaptionsoft.games.trivia.Printer;
 
 public class Game {
     public static final int MAXIMUM_AMOUNT_OF_PLAYERS = 6;
@@ -11,6 +12,7 @@ public class Game {
     private static final String CATEGORY_SPORTS = "Sports";
     private static final String CATEGORY_ROCK = "Rock";
     private static final int MINIMUM_AMOUNT_OF_PLAYERS = 2;
+    private final Printer printer;
 
     ArrayList players = new ArrayList();
     int[] places = new int[MAXIMUM_AMOUNT_OF_PLAYERS];
@@ -25,7 +27,8 @@ public class Game {
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
 
-    public Game() {
+    public Game(Printer printer) {
+        this.printer = printer;
         for (int index = 0; index < NUMBER_OF_QUESTIONS; index++) {
             popQuestions.addLast(CATEGORY_POP + " Question " + index);
             scienceQuestions.addLast((CATEGORY_SCIENCE + " Question " + index));
@@ -176,6 +179,6 @@ public class Game {
     }
 
     private void print(Object output) {
-        System.out.println(output);
+        printer.print(output);
     }
 }

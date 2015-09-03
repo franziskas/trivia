@@ -45,10 +45,27 @@ public class GameShould {
 
     @Test
     public void
+    has_no_players_initially() {
+        assertThat(game.numberOfPlayers(), is(0));
+    }
+
+    @Test
+    public void
     counts_added_Players() {
-        for (int playerNumber = 0; playerNumber < numberOfPlayers; playerNumber++) {
+        addPlayers(numberOfPlayers);
+
+        assertThat(game.numberOfPlayers(), is(numberOfPlayers));
+    }
+
+    private void addPlayers(int numberOfPlayersToAdd) {
+        for (int playerNumber = 0; playerNumber < numberOfPlayersToAdd; playerNumber++) {
             game.add("player" + playerNumber);
         }
-        assertThat(game.numberOfPlayers(), is(numberOfPlayers));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void
+    throws_an_exception_for_more_than_5_players() {
+        addPlayers(6);
     }
 }

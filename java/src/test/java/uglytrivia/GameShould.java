@@ -155,6 +155,44 @@ public class GameShould {
         assertThat(noWinnerYet, is(noWinner));
     }
 
+    @Test
+    public void
+    sends_player_to_penalty_box_after_wrong_answer() {
+        addPlayers(2);
+
+        game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "Question was incorrectly answered",
+                "player1 was sent to the penalty box"
+        ));
+    }
+
+    @Test
+    public void
+    moves_on_to_next_player_after_wrong_answer() {
+        addPlayers(2);
+
+        game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();
+        game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "Question was incorrectly answered",
+                "player1 was sent to the penalty box",
+                "Question was incorrectly answered",
+                "player2 was sent to the penalty box"
+        ));
+    }
+
+
     private void addPlayers(int numberOfPlayersToAdd) {
         for (int playerNumber = 0; playerNumber < numberOfPlayersToAdd; playerNumber++) {
             game.add("player" + (playerNumber + 1));

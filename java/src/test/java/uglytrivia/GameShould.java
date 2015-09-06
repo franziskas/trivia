@@ -213,6 +213,29 @@ public class GameShould {
         ));
     }
 
+    @Test
+    public void
+    executes_no_move_if_in_penalty_box_and_even_roll() {
+        addPlayers(2);
+
+        game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();
+        game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();
+        game.executeMove(2);
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "Question was incorrectly answered",
+                "player1 was sent to the penalty box",
+                "Question was incorrectly answered",
+                "player2 was sent to the penalty box",
+                "player1 is the current player",
+                "They have rolled a 2",
+                "player1 is not getting out of the penalty box"
+        ));
+    }
 
     private void addPlayers(int numberOfPlayersToAdd) {
         for (int playerNumber = 0; playerNumber < numberOfPlayersToAdd; playerNumber++) {

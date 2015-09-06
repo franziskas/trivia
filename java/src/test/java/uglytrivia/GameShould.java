@@ -77,7 +77,31 @@ public class GameShould {
     public void
     prints_added_players() {
         addPlayers(1);
-        assertThat(printedLines, contains("player1 was added", "They are player number 1"));
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1"));
+    }
+
+    @Test
+    public void
+    prints_game_moves() {
+        addPlayers(2);
+        int rolled = 1;
+
+        game.executeMove(rolled);
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "player1 is the current player",
+                "They have rolled a " + rolled,
+                "player1's new location is " + rolled,
+                "The category is Science",
+                "Science Question 0"
+        ));
     }
 
     private void addPlayers(int numberOfPlayersToAdd) {

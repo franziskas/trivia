@@ -102,6 +102,59 @@ public class GameShould {
         ));
     }
 
+    @Test
+    public void
+    awards_player_coins_after_correct_answer() {
+        addPlayers(2);
+
+        game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "Answer was corrent!!!!",
+                "player1 now has 1 Gold Coins."
+        ));
+    }
+
+    @Test
+    public void
+    moves_on_to_next_player_after_correct_answer() {
+        addPlayers(2);
+
+        game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+        game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "Answer was corrent!!!!",
+                "player1 now has 1 Gold Coins.",
+                "Answer was corrent!!!!",
+                "player2 now has 1 Gold Coins."
+        ));
+    }
+
+    @Test
+    @Parameters({"1,true", "2,true", "3,true", "4,true", "5,true", "6,false"})
+    public void
+    determines_if_player_won_after_six_correct_answers(int numberOfCorrectAnswersForEachPlayer, boolean noWinner) {
+        addPlayers(2);
+
+
+        Boolean noWinnerYet = true;
+        for (int number = 0; number < numberOfCorrectAnswersForEachPlayer; number++) {
+            noWinnerYet = game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+            game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+        }
+
+        assertThat(noWinnerYet, is(noWinner));
+    }
+
     private void addPlayers(int numberOfPlayersToAdd) {
         for (int playerNumber = 0; playerNumber < numberOfPlayersToAdd; playerNumber++) {
             game.add("player" + (playerNumber + 1));

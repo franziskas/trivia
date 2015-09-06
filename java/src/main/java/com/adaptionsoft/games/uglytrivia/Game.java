@@ -134,7 +134,7 @@ public class Game {
                         + numberOfGoldCoins[currentPlayer]
                         + " Gold Coins.");
 
-                boolean winner = didPlayerWin();
+                boolean winner = noWinnerYet();
                 currentPlayer++;
                 if (currentPlayer == players.size()) currentPlayer = 0;
 
@@ -155,11 +155,11 @@ public class Game {
                     + numberOfGoldCoins[currentPlayer]
                     + " Gold Coins.");
 
-            boolean winner = didPlayerWin();
+            boolean noWinnerYet = noWinnerYet();
             currentPlayer++;
             if (currentPlayer == players.size()) currentPlayer = 0;
 
-            return winner;
+            return noWinnerYet;
         }
     }
 
@@ -174,7 +174,7 @@ public class Game {
     }
 
 
-    private boolean didPlayerWin() {
+    private boolean noWinnerYet() {
         return !(numberOfGoldCoins[currentPlayer] == MAXIMUM_AMOUNT_OF_PLAYERS);
     }
 

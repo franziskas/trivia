@@ -13,10 +13,8 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assume.assumeThat;
 
 @RunWith(JUnitParamsRunner.class)
 public class GameShould {
@@ -84,10 +82,10 @@ public class GameShould {
     }
 
     @Test
+    @Parameters({"0,Pop", "1,Science", "2,Sports", "3,Rock"})
     public void
-    prints_game_moves() {
+    prints_game_moves_and_asks_categorised_questions(int rolled, String category) {
         addPlayers(2);
-        int rolled = 1;
 
         game.executeMove(rolled);
 
@@ -99,8 +97,8 @@ public class GameShould {
                 "player1 is the current player",
                 "They have rolled a " + rolled,
                 "player1's new location is " + rolled,
-                "The category is Science",
-                "Science Question 0"
+                "The category is " + category,
+                category + " Question 0"
         ));
     }
 

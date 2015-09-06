@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -72,9 +73,16 @@ public class GameShould {
         assertThat(game.isPlayable(), is(isPlayable));
     }
 
+    @Test
+    public void
+    prints_added_players() {
+        addPlayers(1);
+        assertThat(printedLines, contains("player1 was added", "They are player number 1"));
+    }
+
     private void addPlayers(int numberOfPlayersToAdd) {
         for (int playerNumber = 0; playerNumber < numberOfPlayersToAdd; playerNumber++) {
-            game.add("player" + playerNumber);
+            game.add("player" + (playerNumber + 1));
         }
     }
 }

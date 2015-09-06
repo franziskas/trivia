@@ -121,6 +121,27 @@ public class GameShould {
 
     @Test
     public void
+    awards_player_no_coins_after_correct_answer_following_a_wrong_one() {
+        addPlayers(2);
+
+        game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();
+        game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+        game.determineIfPlayerWonAfterCorrectAnswerAndMoveOnToNextPlayer();
+
+        assertThat(printedLines, contains(
+                "player1 was added",
+                "They are player number 1",
+                "player2 was added",
+                "They are player number 2",
+                "Question was incorrectly answered",
+                "player1 was sent to the penalty box",
+                "Answer was corrent!!!!",
+                "player2 now has 1 Gold Coins."
+        ));
+    }
+
+    @Test
+    public void
     moves_on_to_next_player_after_correct_answer() {
         addPlayers(2);
 

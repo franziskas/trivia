@@ -1,7 +1,5 @@
 package uglytrivia;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.adaptionsoft.games.trivia.Printer;
 import com.adaptionsoft.games.uglytrivia.Game;
 import junitparams.JUnitParamsRunner;
@@ -11,6 +9,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
@@ -239,7 +240,7 @@ public class GameShould {
 
     @Test
     public void
-    executes_no_move_if_in_penalty_box_and_odd_roll() {
+    executes_move_if_in_penalty_box_and_odd_roll() {
         addPlayers(2);
 
         game.movePlayerInPenaltyBoxAfterWrongAnswerAndMoveOnToNextPlayer();

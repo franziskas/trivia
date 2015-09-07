@@ -74,21 +74,19 @@ public class Game {
             if (rollIsOdd) {
                 playerGetsOutOfPenaltyBox();
 
-                moveThePlayerAndAskTheNextQuestion(roll);
+                moveTheCurrentPlayer(roll);
+
+                askTheNextQuestion();
             } else {
                 playerDoesNotGetOutOfPenaltyBox();
             }
 
         } else {
-            moveThePlayerAndAskTheNextQuestion(roll);
+            moveTheCurrentPlayer(roll);
+
+            askTheNextQuestion();
         }
 
-    }
-
-    private void moveThePlayerAndAskTheNextQuestion(int roll) {
-        moveTheCurrentPlayer(roll);
-
-        askTheNextQuestion();
     }
 
     private void askTheNextQuestion() {

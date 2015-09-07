@@ -88,6 +88,10 @@ public class Game {
     private void moveThePlayerAndAskTheNextQuestion(int roll) {
         moveTheCurrentPlayer(roll);
 
+        askTheNextQuestion();
+    }
+
+    private void askTheNextQuestion() {
         print("The category is " + currentCategory());
         askQuestion();
     }

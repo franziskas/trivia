@@ -87,7 +87,8 @@ public class Game {
 
     private void moveThePlayerAndAskTheNextQuestion(int roll) {
         places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+        boolean endOfTheBoardIsReached = places[currentPlayer] > 11;
+        if (endOfTheBoardIsReached) places[currentPlayer] = places[currentPlayer] - 12;
 
         print(players.get(currentPlayer)
                 + "'s new location is "

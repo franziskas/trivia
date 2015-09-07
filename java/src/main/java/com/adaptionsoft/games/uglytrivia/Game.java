@@ -86,6 +86,13 @@ public class Game {
     }
 
     private void moveThePlayerAndAskTheNextQuestion(int roll) {
+        moveTheCurrentPlayer(roll);
+
+        print("The category is " + currentCategory());
+        askQuestion();
+    }
+
+    private void moveTheCurrentPlayer(int roll) {
         places[currentPlayer] = places[currentPlayer] + roll;
         boolean endOfTheBoardIsReached = places[currentPlayer] > 11;
         if (endOfTheBoardIsReached) places[currentPlayer] = places[currentPlayer] - 12;
@@ -93,8 +100,6 @@ public class Game {
         print(players.get(currentPlayer)
                 + "'s new location is "
                 + places[currentPlayer]);
-        print("The category is " + currentCategory());
-        askQuestion();
     }
 
     private void playerDoesNotGetOutOfPenaltyBox() {

@@ -64,8 +64,7 @@ public class Game {
     }
 
     public void executeMove(int roll) {
-        String output = players.get(currentPlayer) + " is the current player";
-        print(output);
+        print(players.get(currentPlayer) + " is the current player");
         print("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {

@@ -72,9 +72,8 @@ public class Game {
             boolean rollIsOdd = roll % MINIMUM_AMOUNT_OF_PLAYERS != 0;
 
             if (rollIsOdd) {
-                isGettingOutOfPenaltyBox = true;
+                playerGetsOutOfPenaltyBox();
 
-                print(players.get(currentPlayer) + " is getting out of the penalty box");
                 places[currentPlayer] = places[currentPlayer] + roll;
                 if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
@@ -100,6 +99,11 @@ public class Game {
             askQuestion();
         }
 
+    }
+
+    private void playerGetsOutOfPenaltyBox() {
+        isGettingOutOfPenaltyBox = true;
+        print(players.get(currentPlayer) + " is getting out of the penalty box");
     }
 
     private void askQuestion() {

@@ -1,8 +1,9 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import com.adaptionsoft.games.trivia.Printer;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
-import com.adaptionsoft.games.trivia.Printer;
 
 public class Game {
     public static final int MAXIMUM_AMOUNT_OF_PLAYERS = 6;
@@ -68,7 +69,9 @@ public class Game {
         print("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
-            if (roll % MINIMUM_AMOUNT_OF_PLAYERS != 0) {
+            boolean rollIsOdd = roll % MINIMUM_AMOUNT_OF_PLAYERS != 0;
+
+            if (rollIsOdd) {
                 isGettingOutOfPenaltyBox = true;
 
                 print(players.get(currentPlayer) + " is getting out of the penalty box");

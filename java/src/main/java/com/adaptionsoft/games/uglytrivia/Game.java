@@ -69,7 +69,7 @@ public class Game {
         print("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
-            boolean rollIsOdd = roll % MINIMUM_AMOUNT_OF_PLAYERS != 0;
+            boolean rollIsOdd = roll % 2 != 0;
 
             if (rollIsOdd) {
                 playerGetsOutOfPenaltyBox();

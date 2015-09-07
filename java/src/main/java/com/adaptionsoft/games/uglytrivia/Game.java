@@ -83,8 +83,7 @@ public class Game {
                 print("The category is " + currentCategory());
                 askQuestion();
             } else {
-                print(players.get(currentPlayer) + " is not getting out of the penalty box");
-                isGettingOutOfPenaltyBox = false;
+                playerDoesNotGetOutOfPenaltyBox();
             }
 
         } else {
@@ -99,6 +98,11 @@ public class Game {
             askQuestion();
         }
 
+    }
+
+    private void playerDoesNotGetOutOfPenaltyBox() {
+        print(players.get(currentPlayer) + " is not getting out of the penalty box");
+        isGettingOutOfPenaltyBox = false;
     }
 
     private void playerGetsOutOfPenaltyBox() {
